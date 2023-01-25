@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum Product_Color
     {
+        None,
         Red,
         Green,
         Blue,

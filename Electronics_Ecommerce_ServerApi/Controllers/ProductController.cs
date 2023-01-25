@@ -1,7 +1,9 @@
 ﻿using Data;
 using Data.Models;
+using Data.Models.DTO;
 using Data.Models.Enums;
 using Data.Repository;
+using Data.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,40 +17,84 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
     {
         
         private readonly UserManager<UserApplication> userManager;
-        private readonly IGenericRepository<BaseProduct> ProductRepository;
-        private readonly IGenericRepository<CreditCard> CreditCardRepository;
-        private readonly IGenericRepository<Address> AddressRepository;
+        IGenericRepository<Product> genericRepository;
+        private readonly IService service;
         private readonly EcommerceDbContext dbContext;
 
-        public ProductController(UserManager<UserApplication> userManager, IGenericRepository<BaseProduct> productRepository, EcommerceDbContext dbContext)
+
+        public ProductController(UserManager<UserApplication> userManager, IService service, IGenericRepository<Product> genericRepository,
+        EcommerceDbContext dbContext )
         {
             this.userManager = userManager;
-            this.ProductRepository = productRepository;
+            this.service = service;
             this.dbContext = dbContext;
+            this.genericRepository = genericRepository;
+       
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll() 
         { 
-            var res = await ProductRepository.GetAll();          
-            return Ok(res);
+            var res = await genericRepository.GetAll();
+            var ves = res.Where(n => n.Category == Category.Mobile_Phone);
+            return Ok(ves);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(BaseProduct newProduct)
+        public async Task<IActionResult> Add(Product product)
         {
-            if (newProduct == null)
-            {
-                return BadRequest();
-            }
-            
-           await ProductRepository.Insert(newProduct); 
-            return Ok(newProduct);
+            if (product == null) { return BadRequest(); }
+            await genericRepository.Insert(product);
+            return Ok(product);           
         }
 
 
-      
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+        
+
+
+
+ 
+
+
+
+
+
+
+

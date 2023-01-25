@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum Resolution
     {
+          None,
           r1920x1080,
           r2560x1080,
           r2560x1440,

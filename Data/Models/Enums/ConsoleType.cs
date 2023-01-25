@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum ConsoleType
     {
+        None,
         PlayStation4,
         PlayStation5,
         XboxSeriesS,

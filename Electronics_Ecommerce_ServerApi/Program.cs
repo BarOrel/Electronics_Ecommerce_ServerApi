@@ -1,6 +1,7 @@
 using Data;
 using Data.Models;
 using Data.Repository;
+using Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,8 @@ builder.Services.AddIdentity<UserApplication, IdentityRole>(options => {
     options.Password.RequireLowercase = false;
 }).AddEntityFrameworkStores<EcommerceDbContext>();
 
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddTransient<IService, Service>();
+builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
 

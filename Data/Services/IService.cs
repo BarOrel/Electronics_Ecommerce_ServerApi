@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Data.Models.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Models.Products.Computers.Accessories
+namespace Data.Services
 {
-    public class HeadPhone:BaseProduct
+    public interface IService
     {
+        
+
     }
 }

@@ -8,8 +8,8 @@ namespace Data.Models.Enums
 {
     public enum GpuType
     {
-     
-      
+
+        None,
         RTX2060,
         RTX2070,
         RTX2080,

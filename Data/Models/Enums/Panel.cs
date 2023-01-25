@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum Panel
     {
+        None,
         TN,
         IPS,
         OLED,

@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum CpuType
     {
+        None,
         i3,
         i5,
         i7,

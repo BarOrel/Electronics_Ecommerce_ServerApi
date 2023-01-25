@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum Manufacturer
     {
+       None,
        Apple,
        Samsung,
        OnePlus,

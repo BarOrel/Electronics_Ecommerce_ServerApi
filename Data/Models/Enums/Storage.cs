@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum Storage
     {
+        None,
         s4gb,
         s8gb,
         s16gb,

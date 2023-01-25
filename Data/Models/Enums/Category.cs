@@ -8,6 +8,7 @@ namespace Data.Models.Enums
 {
     public enum Category
     {
+        
         Mobile_Phone,
         Tablet,
         Smart_Watches,
