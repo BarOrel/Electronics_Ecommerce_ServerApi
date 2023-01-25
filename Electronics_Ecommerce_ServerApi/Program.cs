@@ -25,9 +25,19 @@ builder.Services.AddIdentity<UserApplication, IdentityRole>(options => {
     options.Password.RequireLowercase = false;
 }).AddEntityFrameworkStores<EcommerceDbContext>();
 
+
 builder.Services.AddTransient<IService, Service>();
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+      "CorsPolicy",
+      builder => builder.WithOrigins("http://localhost:4200")
+      .AllowAnyMethod()
+      .AllowAnyHeader()
+      .AllowCredentials());
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,7 +50,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseCors("CorsPolicy");
 
 app.Run();
