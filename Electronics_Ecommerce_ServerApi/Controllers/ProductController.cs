@@ -32,12 +32,20 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
        
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll() 
+        [HttpGet("{Index}")]
+        public async Task<IActionResult> GetAll(int Index) 
         { 
             var res = await genericRepository.GetAll();
-            var ves = res.Where(n => n.Category == Category.Mobile_Phone);
-            return Ok(ves);
+            if (Index == 1)
+                res= res.Where(n => n.Category == Category.Mobile_Phone);
+            if (Index == 2)
+                res = res.Where(n => n.Category == Category.Desktop_PC);
+            if (Index == 3)
+                res = res.Where(n => n.Category == Category.VideoGame_Console);
+            if (Index == 4)
+                res = res.Where(n => n.Category == Category.Televsion);
+            
+            return Ok(res);
         }
 
 
