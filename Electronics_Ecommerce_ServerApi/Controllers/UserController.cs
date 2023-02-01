@@ -4,7 +4,7 @@ using Data.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using ToDoListPractice.Data.Services.JWT;
 
 namespace ToDoListPractice.Controllers
 {
@@ -14,14 +14,18 @@ namespace ToDoListPractice.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserManager<UserApplication> userManager;
+        private readonly IJWTTokenService tokenService;
         private readonly SignInManager<UserApplication> signInManager;
         private readonly IGenericRepository<Address> addressRepository;
+        private readonly IGenericRepository<Cart> cartRepository;
 
-        public UserController(UserManager<UserApplication> userManager, SignInManager<UserApplication> signInManager, IGenericRepository<Address> addressRepository)
+        public UserController(UserManager<UserApplication> userManager, IJWTTokenService tokenService, SignInManager<UserApplication> signInManager, IGenericRepository<Address> addressRepository, IGenericRepository<Cart> cartRepository)
         {
             this.userManager = userManager;
+            this.tokenService = tokenService;
             this.signInManager = signInManager;
             this.addressRepository = addressRepository;
+            this.cartRepository = cartRepository;
         }
 
         [HttpPost("Register")]
@@ -34,7 +38,7 @@ namespace ToDoListPractice.Controllers
                 FullName = $"{model.FirstName} {model.LastName}"
             };
 
-            if(model.Region != "string" && model.City != "string" && model.Street != "string" && model.AddressNumber != "string")
+            if (model.Region != "string" && model.City != "string" && model.Street != "string" && model.AddressNumber != "string")
             {
                 Address address = new()
                 {
@@ -48,10 +52,17 @@ namespace ToDoListPractice.Controllers
                 user.AddressId = address1.Id;
             }
 
-             var result = await userManager.CreateAsync(user,model.Password); 
+            var result = await userManager.CreateAsync(user, model.Password);
 
-            if(result.Succeeded)
+            
+
+            if (result.Succeeded)
+            {
+                Cart cart = new() { UserId = user.Id, };
+                await cartRepository.Insert(cart);
                 return Ok(result);
+            }
+
 
             return BadRequest(result);
 
@@ -77,14 +88,19 @@ namespace ToDoListPractice.Controllers
                 username = userFromDB.UserName,
                 email = userFromDB.Email,
                 userid = userFromDB.Id,
-                //token = tokenService.GenerateToken(userFromDB)
+                token = tokenService.GenerateToken(userFromDB)
 
             });
 
         }
 
+        //[HttpPost("ValidateToken")]
+        //public async Task<IActionResult> ValidateToken(string Token)
+        //{
+        //    var res = tokenService.ValidateToken(Token);
+        //    if (res) { return Ok(Token); }
+        //    else { return BadRequest(); }
 
-        //add logout method 
-
+        //}
     }
 }

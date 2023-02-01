@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electronics_Ecommerce_ServerApi", "Electronics_Ecommerce_ServerApi\Electronics_Ecommerce_ServerApi.csproj", "{927464E2-4F37-42C9-829E-D121E2C506AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Electronics_Ecommerce_ServerApi", "Electronics_Ecommerce_ServerApi\Electronics_Ecommerce_ServerApi.csproj", "{927464E2-4F37-42C9-829E-D121E2C506AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{6D0BF0C5-35C9-418E-A0BB-86CA8F35025F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{6D0BF0C5-35C9-418E-A0BB-86CA8F35025F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

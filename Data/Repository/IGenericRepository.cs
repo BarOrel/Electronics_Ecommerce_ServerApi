@@ -13,7 +13,7 @@ namespace Data.Repository
          Task Insert(T obj);
         Task<T> Find(T obj);
          Task Update(T obj);
-         Task Delete(object id);
+         Task Delete(T obj);
          Task Save();
      }
     

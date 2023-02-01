@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,14 +40,17 @@ namespace Data.Repository
             
         }
 
-        public Task Update(T obj)
+        public async Task Update(T obj)
         {
-            throw new NotImplementedException();
+            context.Set<T>().Update(obj);
+            await Save();
         }
 
-        public Task Delete(object id)
+        public async Task Delete(T obj)
         {
-            throw new NotImplementedException();
+            T result = await Find(obj);
+            context.Set<T>().Remove(result);
+            await Save();
         }
 
         public async Task Save()

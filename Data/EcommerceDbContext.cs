@@ -15,8 +15,8 @@ namespace Data
          public EcommerceDbContext(DbContextOptions<EcommerceDbContext> options) : base(options)
          {
          }
-       
-        
+
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -51,8 +51,8 @@ namespace Data
                 .Ignore(c => c.TwoFactorEnabled)
                 .Ignore(c => c.LockoutEnd)
                 .Ignore(c => c.AccessFailedCount)
-                .Ignore(c => c.PhoneNumberConfirmed)
-                .Ignore(c => c.NormalizedEmail);
+                .Ignore(c => c.PhoneNumberConfirmed);
+                
 
 
             modelBuilder.Entity<UserApplication>().ToTable("Users");//to change the name of table.

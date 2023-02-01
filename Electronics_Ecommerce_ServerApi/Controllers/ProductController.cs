@@ -7,6 +7,7 @@ using Data.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Electronics_Ecommerce_ServerApi.Controllers
@@ -18,26 +19,29 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         
         private readonly UserManager<UserApplication> userManager;
         IGenericRepository<Product> genericRepository;
+        private readonly IGenericRepository<Cart> cartRepository;
         private readonly IService service;
         private readonly EcommerceDbContext dbContext;
 
 
         public ProductController(UserManager<UserApplication> userManager, IService service, IGenericRepository<Product> genericRepository,
+             IGenericRepository<Cart> CartRepository,
         EcommerceDbContext dbContext )
         {
             this.userManager = userManager;
             this.service = service;
             this.dbContext = dbContext;
             this.genericRepository = genericRepository;
-       
+            cartRepository = CartRepository;
         }
 
         [HttpGet("{Index}")]
         public async Task<IActionResult> GetAll(int Index) 
         { 
             var res = await genericRepository.GetAll();
+
             if (Index == 1)
-                res= res.Where(n => n.Category == Category.Mobile_Phone);
+                res = res.Where(n => n.Category == Category.Mobile_Phone);
             if (Index == 2)
                 res = res.Where(n => n.Category == Category.Desktop_PC);
             if (Index == 3)
@@ -56,23 +60,31 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
             await genericRepository.Insert(product);
             return Ok(product);           
         }
+        
+        [HttpPost("AddCart")]
+        public async Task<IActionResult> AddCart(Cart cart)
+        {
+           
+            var res = await dbContext.Carts.Include(n => n.Products).ToListAsync();
+            return Ok(res);
+        }
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

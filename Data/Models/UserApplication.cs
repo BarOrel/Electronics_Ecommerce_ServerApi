@@ -12,7 +12,7 @@ namespace Data.Models
         public string FullName { get; set; }
         public int CreditCardId { get; set; }
         public int AddressId { get; set; }
-
+        
 
     }
 }

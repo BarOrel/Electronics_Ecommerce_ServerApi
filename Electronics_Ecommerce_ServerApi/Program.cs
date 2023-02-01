@@ -4,6 +4,11 @@ using Data.Repository;
 using Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ToDoListPractice.Data.Services.JWT;
+using ToDoListPractice.Data.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +31,28 @@ builder.Services.AddIdentity<UserApplication, IdentityRole>(options => {
 }).AddEntityFrameworkStores<EcommerceDbContext>();
 
 
+
+
 builder.Services.AddTransient<IService, Service>();
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddTransient<IJWTTokenService, JWTTokenService>();
+
+builder.Services.AddAuthentication(cnf =>
+{
+    cnf.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    cnf.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(options => {
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:Key"])),
+        ValidIssuer = builder.Configuration["Token:Issuer"],
+        ValidateIssuer = true,
+        ValidateAudience = false,
+    };
+});
 
 builder.Services.AddCors(options =>
 {
