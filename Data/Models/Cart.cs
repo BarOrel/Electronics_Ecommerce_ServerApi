@@ -10,6 +10,8 @@ namespace Data.Models
     {
         public int Id { get; set; }
         public string UserId { get; set; }
-        public List<Product>? Products { get; set; }
+        public List<CartProduct>? Products { get; set; }
+
+       
     }
 }

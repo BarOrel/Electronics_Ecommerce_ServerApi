@@ -18,7 +18,7 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
     {
         
         private readonly UserManager<UserApplication> userManager;
-        IGenericRepository<Product> genericRepository;
+        IGenericRepository<Product> productRepository;
         private readonly IGenericRepository<Cart> cartRepository;
         private readonly IService service;
         private readonly EcommerceDbContext dbContext;
@@ -31,14 +31,15 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
             this.userManager = userManager;
             this.service = service;
             this.dbContext = dbContext;
-            this.genericRepository = genericRepository;
+            this.productRepository = genericRepository;
             cartRepository = CartRepository;
         }
 
         [HttpGet("{Index}")]
         public async Task<IActionResult> GetAll(int Index) 
         { 
-            var res = await genericRepository.GetAll();
+            var res = await productRepository.GetAll();
+            
 
             if (Index == 1)
                 res = res.Where(n => n.Category == Category.Mobile_Phone);
@@ -57,7 +58,7 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         public async Task<IActionResult> Add(Product product)
         {
             if (product == null) { return BadRequest(); }
-            await genericRepository.Insert(product);
+            await productRepository.Insert(product);
             return Ok(product);           
         }
         
@@ -66,6 +67,7 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         {
            
             var res = await dbContext.Carts.Include(n => n.Products).ToListAsync();
+            
             return Ok(res);
         }
 

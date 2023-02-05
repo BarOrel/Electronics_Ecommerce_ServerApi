@@ -16,12 +16,13 @@ namespace Data
          {
          }
 
+        public virtual DbSet<CartProduct> CartProducts { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-
-
+       
+       
 
 
 

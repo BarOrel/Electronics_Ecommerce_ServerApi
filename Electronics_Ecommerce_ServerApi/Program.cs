@@ -9,6 +9,7 @@ using ToDoListPractice.Data.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,9 @@ builder.Services.AddIdentity<UserApplication, IdentityRole>(options => {
 }).AddEntityFrameworkStores<EcommerceDbContext>();
 
 
-
+builder.Services.AddControllers().AddJsonOptions(x => {
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 builder.Services.AddTransient<IService, Service>();
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));

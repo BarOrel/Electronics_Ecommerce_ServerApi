@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20230131173456_init")]
+    [Migration("20230201112032_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,99 @@ namespace Data.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("Data.Models.CartProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Color")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cores")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CpuName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CpuType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GpuName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GpuType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Inch")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Manufacturer")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MilliampHours")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OperationSystem")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Panel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Resolution")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeMM")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Storage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Test")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Threads")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("CartProducts");
+                });
+
             modelBuilder.Entity("Data.Models.CreditCard", b =>
                 {
                     b.Property<int>("Id")
@@ -102,9 +195,6 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("CartId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Category")
                         .HasColumnType("int");
@@ -180,8 +270,6 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CartId");
-
                     b.ToTable("Products");
                 });
 
@@ -238,11 +326,15 @@ namespace Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Data.Models.Product", b =>
+            modelBuilder.Entity("Data.Models.CartProduct", b =>
                 {
-                    b.HasOne("Data.Models.Cart", null)
+                    b.HasOne("Data.Models.Cart", "Cart")
                         .WithMany("Products")
-                        .HasForeignKey("CartId");
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
                 });
 
             modelBuilder.Entity("Data.Models.Cart", b =>
