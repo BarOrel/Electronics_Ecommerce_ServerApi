@@ -49,7 +49,7 @@ namespace Data.Repository
         public async Task Delete(T obj)
         {
             T result = await Find(obj);
-            context.Set<T>().Remove(result);
+             context.Set<T>().Remove(result);
             await Save();
         }
 

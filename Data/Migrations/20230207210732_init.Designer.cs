@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20230205102204_init")]
+    [Migration("20230207210732_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,7 +78,7 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CartId")
+                    b.Property<int?>("CartId")
                         .HasColumnType("int");
 
                     b.Property<int>("Category")
@@ -129,6 +129,9 @@ namespace Data.Migrations
                     b.Property<int>("OperationSystem")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Panel")
                         .HasColumnType("int");
 
@@ -157,6 +160,8 @@ namespace Data.Migrations
 
                     b.HasIndex("CartId");
 
+                    b.HasIndex("OrderId");
+
                     b.ToTable("CartProducts");
                 });
 
@@ -183,6 +188,45 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CreditCards");
+                });
+
+            modelBuilder.Entity("Data.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("AddressId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreditCardId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FinalPrice")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsShipped")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("Open")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("OrderTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("CreditCardId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Data.Models.Product", b =>
@@ -327,14 +371,36 @@ namespace Data.Migrations
                 {
                     b.HasOne("Data.Models.Cart", "Cart")
                         .WithMany("Products")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("Data.Models.Order", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId");
 
                     b.Navigation("Cart");
                 });
 
+            modelBuilder.Entity("Data.Models.Order", b =>
+                {
+                    b.HasOne("Data.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.HasOne("Data.Models.CreditCard", "CreditCard")
+                        .WithMany()
+                        .HasForeignKey("CreditCardId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("CreditCard");
+                });
+
             modelBuilder.Entity("Data.Models.Cart", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Data.Models.Order", b =>
                 {
                     b.Navigation("Products");
                 });

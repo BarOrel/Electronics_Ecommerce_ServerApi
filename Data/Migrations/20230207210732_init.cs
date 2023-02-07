@@ -111,6 +111,35 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FinalPrice = table.Column<int>(type: "int", nullable: true),
+                    OrderTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AddressId = table.Column<int>(type: "int", nullable: true),
+                    CreditCardId = table.Column<int>(type: "int", nullable: true),
+                    IsShipped = table.Column<bool>(type: "bit", nullable: true),
+                    Open = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Addresses_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Addresses",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Orders_CreditCards_CreditCardId",
+                        column: x => x.CreditCardId,
+                        principalTable: "CreditCards",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CartProducts",
                 columns: table => new
                 {
@@ -139,7 +168,8 @@ namespace Data.Migrations
                     GpuName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cores = table.Column<int>(type: "int", nullable: false),
                     Threads = table.Column<int>(type: "int", nullable: false),
-                    CartId = table.Column<int>(type: "int", nullable: false)
+                    CartId = table.Column<int>(type: "int", nullable: true),
+                    OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -148,14 +178,33 @@ namespace Data.Migrations
                         name: "FK_CartProducts_Carts_CartId",
                         column: x => x.CartId,
                         principalTable: "Carts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_CartProducts_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartProducts_CartId",
                 table: "CartProducts",
                 column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartProducts_OrderId",
+                table: "CartProducts",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_AddressId",
+                table: "Orders",
+                column: "AddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CreditCardId",
+                table: "Orders",
+                column: "CreditCardId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -173,13 +222,7 @@ namespace Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Addresses");
-
-            migrationBuilder.DropTable(
                 name: "CartProducts");
-
-            migrationBuilder.DropTable(
-                name: "CreditCards");
 
             migrationBuilder.DropTable(
                 name: "Products");
@@ -189,6 +232,15 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Carts");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Addresses");
+
+            migrationBuilder.DropTable(
+                name: "CreditCards");
         }
     }
 }

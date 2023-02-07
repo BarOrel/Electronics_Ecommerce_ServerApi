@@ -21,6 +21,7 @@ namespace Data
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
        
        
 

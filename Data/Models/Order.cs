@@ -18,14 +18,13 @@ namespace Data.Models
 
         public DateTime OrderTime { get; set; }
 
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
-        public CreditCard CreditCard { get; set; }
+        public CreditCard? CreditCard { get; set; }
         
         public bool IsShipped { get; set; }
 
         public bool Open { get; set; }
 
-      
     }
 }
