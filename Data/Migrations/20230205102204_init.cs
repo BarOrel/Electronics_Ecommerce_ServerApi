@@ -139,8 +139,7 @@ namespace Data.Migrations
                     GpuName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cores = table.Column<int>(type: "int", nullable: false),
                     Threads = table.Column<int>(type: "int", nullable: false),
-                    CartId = table.Column<int>(type: "int", nullable: false),
-                    Test = table.Column<int>(type: "int", nullable: false)
+                    CartId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

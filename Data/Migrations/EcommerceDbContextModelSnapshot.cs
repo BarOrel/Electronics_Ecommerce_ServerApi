@@ -145,9 +145,6 @@ namespace Data.Migrations
                     b.Property<int>("Storage")
                         .HasColumnType("int");
 
-                    b.Property<int>("Test")
-                        .HasColumnType("int");
-
                     b.Property<int>("Threads")
                         .HasColumnType("int");
 

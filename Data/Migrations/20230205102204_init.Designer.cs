@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20230201112032_init")]
+    [Migration("20230205102204_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,9 +145,6 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Storage")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Test")
                         .HasColumnType("int");
 
                     b.Property<int>("Threads")

@@ -1,6 +1,7 @@
 ﻿using Data;
 using Data.Models;
 using Data.Models.DTO;
+using Data.Models.Enums;
 using Data.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,18 +15,37 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
     {
         private readonly IGenericRepository<Cart> genericRepository;
         private readonly EcommerceDbContext ecommerceDbContext;
+        private readonly IGenericRepository<CartProduct> productRepository;
 
-        public CartController(IGenericRepository<Cart> genericRepository, EcommerceDbContext ecommerceDbContext)
+        public CartController(IGenericRepository<Cart> genericRepository, EcommerceDbContext ecommerceDbContext, IGenericRepository<CartProduct> productRepository)
         {
             this.genericRepository = genericRepository;
             this.ecommerceDbContext = ecommerceDbContext;
+            this.productRepository = productRepository;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> get()
+        [HttpGet("{UserId}")]
+        public async Task<IActionResult> GetAll(string UserId)
         {
-            var res = await ecommerceDbContext.Carts.Include(n => n.Products).ToListAsync();
-            return Ok(res);
+            var res = ecommerceDbContext.Carts.Include(n=>n.Products).Where(n=>n.UserId== UserId).ToList();
+            return Ok(res.FirstOrDefault().Products);
+        }
+
+
+        [HttpGet("GetCounter/{UserId}")]
+        public async Task<IActionResult> GetCartItemsNumber(string UserId)
+        {
+            var res = ecommerceDbContext.Carts.Include(n => n.Products).Where(n => n.UserId == UserId).ToList();
+            return Ok(res.FirstOrDefault().Products.Count);
+        }
+
+
+        [HttpDelete("{ItemId}")]
+        public async Task<IActionResult> Remove(int ItemId)
+        {
+            var prod = await productRepository.GetById(ItemId);
+            await productRepository.Delete(prod);
+            return Ok(prod);
         }
 
         [HttpPost]
@@ -36,7 +56,6 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
 
             CartProduct cartProduct = new()
             {
-                Id = cartdto.Product.Id,
                 Name = cartdto.Product.Name,
                 Description= cartdto.Product.Description,
                 ImgUrl= cartdto.Product.ImgUrl,
@@ -62,13 +81,10 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
                 Threads= cartdto.Product.Threads,
 
             };
-            
-            ves.Products.Add(cartProduct);
-            var what = res.Where(n => n.Products.Any(l => l == cartProduct));
-            if (what == null) { ecommerceDbContext.CartProducts. }
-            ecommerceDbContext.Carts.Update(ves);
-
-            await ecommerceDbContext.SaveChangesAsync();
+            cartProduct.Cart = ves;
+            await productRepository.Insert(cartProduct);
+            genericRepository.Update(ves);
+           
             return Ok(ves);
         }
     }

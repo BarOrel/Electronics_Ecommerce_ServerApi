@@ -1,6 +1,8 @@
 ﻿using Data.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -52,7 +54,7 @@ namespace Data.Models
         public string? GpuName { get; set; }
         public int Cores { get; set; }
         public int Threads { get; set; }
-        public Cart Cart { get; set; }
-        public int Test { get; set; }
+        public Cart? Cart { get; set; }
+        
     }
 }
