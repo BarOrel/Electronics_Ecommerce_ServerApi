@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Data.Models.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -23,18 +24,41 @@ namespace Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
        
-       
-
-
-
-
-
-
-
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<UserApplication>().HasData(
+                new UserApplication { UserName = "bar1236", PasswordHash = "bar554401" , AddressId = 1 , Email = "bari0777@walla.com" ,FullName = "Bar Orel"}
+
+
+                );
+
+
+
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product {Id = 1 , Name = "PlayStation 5" , Price = 499 ,Manufacturer = Manufacturer.Sony , ImgUrl = "https://www.citypng.com/public/uploads/preview/-11591925787cggjhepdvq.png" , ReleaseDate = DateTime.Now ,  Category = Category.None , Description= "The PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. It was announced as successor to the PlayStation 4 in April 2019, was launched on November 12, 2020" }
+
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Ignore<IdentityRole>();
             modelBuilder.Ignore<IdentityUserToken<string>>();

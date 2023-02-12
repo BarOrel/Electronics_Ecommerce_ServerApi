@@ -28,7 +28,8 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         public async Task<IActionResult> GetAll(string UserId)
         {
             var res = ecommerceDbContext.Carts.Include(n=>n.Products).Where(n=>n.UserId== UserId).ToList();
-            return Ok(res.FirstOrDefault().Products);
+            var products = res.FirstOrDefault().Products.Where(n => n.IsOrderd == false);
+            return Ok(products);
         }
 
 
@@ -36,7 +37,8 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         public async Task<IActionResult> GetCartItemsNumber(string UserId)
         {
             var res = ecommerceDbContext.Carts.Include(n => n.Products).Where(n => n.UserId == UserId).ToList();
-            return Ok(res.FirstOrDefault().Products.Count);
+            var products = res.FirstOrDefault().Products.Where(n => n.IsOrderd == false);
+            return Ok(products.Count());
         }
 
 

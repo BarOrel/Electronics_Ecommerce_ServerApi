@@ -46,12 +46,10 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
             var users = await userRepository.GetAll();
             var user = users.Where(n => n.Id == UserId).FirstOrDefault();
 
-            //if (user.CreditCardId != 0 && user.AddressId != 0)
-            //{
+            if (/*user.CreditCardId != 0 &&*/ user.AddressId != 0) { 
 
-            //var res = await ecommerceDbContext.Carts.Include(n => n.Products).ToListAsync();
             var cart = await ecommerceDbContext.Carts.Include(n => n.Products).Where(n => n.UserId == UserId).FirstOrDefaultAsync();
-            // var cart = res.Where(n => n.UserId == UserId).FirstOrDefault();
+            
             var finalPrice = 0;
             foreach (var item in cart.Products) { finalPrice += item.Price; }
 
@@ -62,15 +60,20 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
                 OrderTime = DateTime.Now,
                 Products = cart.Products
             };
+            foreach (var item in cart.Products.Where(n => n.IsOrderd == false))
+            {
+                item.IsOrderd = true;
+                await productRepository.Update(item);
+            }
+
+            order.Address = await ecommerceDbContext.Addresses.Where(n=>n.Id == user.AddressId).FirstOrDefaultAsync();
 
             await orderRepository.Insert(order);
-           // ecommerceDbContext.CartProducts.RemoveRange(cart.Products);
-           // await ecommerceDbContext.SaveChangesAsync();
+         
 
             return Ok(order);
-            //}
-
-            return BadRequest();
+            }
+            return BadRequest("No Credit Cart Or Address");
         }
 
     }

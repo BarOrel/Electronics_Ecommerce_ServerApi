@@ -117,12 +117,12 @@ namespace Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FinalPrice = table.Column<int>(type: "int", nullable: true),
-                    OrderTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FinalPrice = table.Column<int>(type: "int", nullable: false),
+                    OrderTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: true),
                     CreditCardId = table.Column<int>(type: "int", nullable: true),
-                    IsShipped = table.Column<bool>(type: "bit", nullable: true),
-                    Open = table.Column<bool>(type: "bit", nullable: true)
+                    IsShipped = table.Column<bool>(type: "bit", nullable: false),
+                    Open = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,6 +169,7 @@ namespace Data.Migrations
                     Cores = table.Column<int>(type: "int", nullable: false),
                     Threads = table.Column<int>(type: "int", nullable: false),
                     CartId = table.Column<int>(type: "int", nullable: true),
+                    IsOrderd = table.Column<bool>(type: "bit", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -185,6 +186,16 @@ namespace Data.Migrations
                         principalTable: "Orders",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Category", "Color", "Cores", "CpuName", "CpuType", "Description", "Discount", "GpuName", "GpuType", "ImgUrl", "Inch", "Manufacturer", "MilliampHours", "Name", "OperationSystem", "Panel", "Price", "ReleaseDate", "Resolution", "SizeMM", "Storage", "Threads", "Type" },
+                values: new object[] { 1, 0, 0, 0, null, 0, "The PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. It was announced as successor to the PlayStation 4 in April 2019, was launched on November 12, 2020", 0, null, 0, "https://www.citypng.com/public/uploads/preview/-11591925787cggjhepdvq.png", 0.0, 5, 0, "PlayStation 5", 0, 0, 499, new DateTime(2023, 2, 9, 12, 16, 35, 203, DateTimeKind.Local).AddTicks(3775), 0, 0, 0, 0, 0 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AddressId", "CreditCardId", "Email", "FullName", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "SecurityStamp", "UserName" },
+                values: new object[] { "5869a881-1a86-4489-b690-18cd03080b99", 1, 0, "bari0777@walla.com", "Bar Orel", null, null, "bar554401", null, "1cabf0f1-125a-4433-b1c2-570a32f0bc06", "bar1236" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartProducts_CartId",

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20230207210732_init")]
+    [Migration("20230209101635_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,6 +116,9 @@ namespace Data.Migrations
                     b.Property<double>("Inch")
                         .HasColumnType("float");
 
+                    b.Property<bool>("IsOrderd")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Manufacturer")
                         .HasColumnType("int");
 
@@ -204,16 +207,16 @@ namespace Data.Migrations
                     b.Property<int?>("CreditCardId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FinalPrice")
+                    b.Property<int>("FinalPrice")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsShipped")
+                    b.Property<bool>("IsShipped")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("Open")
+                    b.Property<bool>("Open")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("OrderTime")
+                    b.Property<DateTime>("OrderTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -312,6 +315,33 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Category = 0,
+                            Color = 0,
+                            Cores = 0,
+                            CpuType = 0,
+                            Description = "The PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. It was announced as successor to the PlayStation 4 in April 2019, was launched on November 12, 2020",
+                            Discount = 0,
+                            GpuType = 0,
+                            ImgUrl = "https://www.citypng.com/public/uploads/preview/-11591925787cggjhepdvq.png",
+                            Inch = 0.0,
+                            Manufacturer = 5,
+                            MilliampHours = 0,
+                            Name = "PlayStation 5",
+                            OperationSystem = 0,
+                            Panel = 0,
+                            Price = 499,
+                            ReleaseDate = new DateTime(2023, 2, 9, 12, 16, 35, 203, DateTimeKind.Local).AddTicks(3775),
+                            Resolution = 0,
+                            SizeMM = 0,
+                            Storage = 0,
+                            Threads = 0,
+                            Type = 0
+                        });
                 });
 
             modelBuilder.Entity("Data.Models.UserApplication", b =>
@@ -365,6 +395,19 @@ namespace Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "5869a881-1a86-4489-b690-18cd03080b99",
+                            AddressId = 1,
+                            CreditCardId = 0,
+                            Email = "bari0777@walla.com",
+                            FullName = "Bar Orel",
+                            PasswordHash = "bar554401",
+                            SecurityStamp = "1cabf0f1-125a-4433-b1c2-570a32f0bc06",
+                            UserName = "bar1236"
+                        });
                 });
 
             modelBuilder.Entity("Data.Models.CartProduct", b =>

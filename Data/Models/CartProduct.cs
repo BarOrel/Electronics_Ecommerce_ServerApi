@@ -55,6 +55,7 @@ namespace Data.Models
         public int Cores { get; set; }
         public int Threads { get; set; }
         public Cart? Cart { get; set; }
-        
+        public bool IsOrderd { get; set; }
+
     }
 }
