@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20230209101635_init")]
+    [Migration("20230212130703_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -335,7 +335,7 @@ namespace Data.Migrations
                             OperationSystem = 0,
                             Panel = 0,
                             Price = 499,
-                            ReleaseDate = new DateTime(2023, 2, 9, 12, 16, 35, 203, DateTimeKind.Local).AddTicks(3775),
+                            ReleaseDate = new DateTime(2023, 2, 12, 15, 7, 3, 636, DateTimeKind.Local).AddTicks(9872),
                             Resolution = 0,
                             SizeMM = 0,
                             Storage = 0,
@@ -399,13 +399,13 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5869a881-1a86-4489-b690-18cd03080b99",
+                            Id = "57a31770-f3b6-456a-be3a-b77d081faf2f",
                             AddressId = 1,
                             CreditCardId = 0,
                             Email = "bari0777@walla.com",
                             FullName = "Bar Orel",
                             PasswordHash = "bar554401",
-                            SecurityStamp = "1cabf0f1-125a-4433-b1c2-570a32f0bc06",
+                            SecurityStamp = "8959d017-75b3-4202-b734-3de93e558386",
                             UserName = "bar1236"
                         });
                 });
