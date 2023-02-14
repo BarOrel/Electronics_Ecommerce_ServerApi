@@ -81,7 +81,15 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet("Details/{Index}")]
+        public async Task<IActionResult> GetProduct(int Index)
+        {
+            var res = await productRepository.GetById(Index);
+            return Ok(res);
+        }
+
+
+            [HttpPost]
         public async Task<IActionResult> Add(Product product)
         {
             if (product == null) { return BadRequest(); }
@@ -97,19 +105,6 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
             
             return Ok(res);
         }
-
-
-
-
-        
-
-
-
-
-
-
-
-
 
 
 
