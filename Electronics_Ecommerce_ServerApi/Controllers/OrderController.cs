@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Data;
 using Data.Models;
 using Data.Models.DTO;
@@ -40,40 +41,45 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         }
 
 
-        [HttpPost("UserId")]
+        [HttpGet("UserId")]
         public async Task<IActionResult> PlaceAnOrder(string UserId)
         {
             var users = await userRepository.GetAll();
             var user = users.Where(n => n.Id == UserId).FirstOrDefault();
 
-            if (/*user.CreditCardId != 0 &&*/ user.AddressId != 0) { 
+            if (user.AddressId != 0) {
+                if (user.CreditCardId != 0)
+                {
 
-            var cart = await ecommerceDbContext.Carts.Include(n => n.Products).Where(n => n.UserId == UserId).FirstOrDefaultAsync();
+                var cart = await ecommerceDbContext.Carts.Include(n => n.Products).Where(n => n.UserId == UserId).FirstOrDefaultAsync();
             
-            var finalPrice = 0;
-            foreach (var item in cart.Products) { finalPrice += item.Price; }
+                var finalPrice = 0;
+                foreach (var item in cart.Products.Where(n => n.IsOrderd == false)) { finalPrice += item.Price; }
 
-            Order order = new()
-            {
-                FinalPrice = finalPrice,
-                UserId = UserId,
-                OrderTime = DateTime.Now,
-                Products = cart.Products
-            };
-            foreach (var item in cart.Products.Where(n => n.IsOrderd == false))
-            {
-                item.IsOrderd = true;
-                await productRepository.Update(item);
-            }
+                Order order = new()
+                {
+                    FinalPrice = finalPrice,
+                    UserId = UserId,
+                    OrderTime = DateTime.Now,
+                    Products = cart.Products
+                };
+                foreach (var item in cart.Products.Where(n => n.IsOrderd == false))
+                {
+                    
+                    item.IsOrderd = true;
+                    await productRepository.Update(item);
+                }
+                    order.CreditCard = await ecommerceDbContext.CreditCards.Where(n => n.Id == user.CreditCardId).FirstOrDefaultAsync();
+                    order.Address = await ecommerceDbContext.Addresses.Where(n=>n.Id == user.AddressId).FirstOrDefaultAsync();
 
-            order.Address = await ecommerceDbContext.Addresses.Where(n=>n.Id == user.AddressId).FirstOrDefaultAsync();
-
-            await orderRepository.Insert(order);
+                await orderRepository.Insert(order);
          
 
-            return Ok(order);
+                    return Ok(order);
+                }
+                return BadRequest("NoCreditCard");
             }
-            return BadRequest("No Credit Cart Or Address");
+            return BadRequest("NoAddress");
         }
 
     }
