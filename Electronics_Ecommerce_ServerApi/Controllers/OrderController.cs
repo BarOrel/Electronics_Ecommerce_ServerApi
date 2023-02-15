@@ -52,7 +52,7 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
                 {
 
                     var cart = await ecommerceDbContext.Carts.Include(n => n.Products).Where(n => n.UserId == UserId).FirstOrDefaultAsync();
-                    if (cart.Products.Count != 0) {
+                    if (cart.Products.Where(n => n.IsOrderd == false).Count() != 0) {
             
                         var finalPrice = 0;
                         foreach (var item in cart.Products.Where(n => n.IsOrderd == false)) { finalPrice += item.Price; }
