@@ -27,9 +27,19 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         [HttpGet("{UserId}")]
         public async Task<IActionResult> GetAll(string UserId)
         {
+
+            var finalPrice = 0;
+            CartView cartView = new CartView();
             var res = ecommerceDbContext.Carts.Include(n=>n.Products).Where(n=>n.UserId== UserId).ToList();
             var products = res.FirstOrDefault().Products.Where(n => n.IsOrderd == false);
-            return Ok(products);
+
+            foreach (var item in products)
+            {
+                finalPrice+= item.Price;
+            }
+            cartView.FinalPrice= finalPrice;
+            cartView.Products = products.ToList();
+            return Ok(cartView);
         }
 
 

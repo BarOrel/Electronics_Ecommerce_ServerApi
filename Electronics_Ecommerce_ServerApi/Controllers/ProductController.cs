@@ -108,6 +108,27 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
 
 
 
+        [HttpGet("GetProductsHome")]
+        public async Task<IActionResult> GetProdcutsHome()
+        {
+            var res = await productRepository.GetAll();
+            var discounted1 = res.Where(n => n.Discount == 0).Take(2).ToList();
+            var discounted2 = res.Where(n => n.Discount == 0).Skip(2).Take(2).ToList();
+
+            var mobilePhones = res.Where(n => n.Category == Category.Mobile_Phone).Take(8).ToList();
+            var gamingConsoles = res.Where(n => n.Category == Category.Smart_Watches).Take(8).ToList();
+
+            HomeDTO homeDTO = new()
+            {
+                DiscountedProducts1 = discounted1,
+                DiscountedProducts2 = discounted2,
+                GamingConsoles = gamingConsoles,
+                MobilePhones = mobilePhones
+            };
+           
+            return Ok(homeDTO);
+        }
+
 
     }
 
