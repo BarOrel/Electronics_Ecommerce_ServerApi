@@ -94,6 +94,14 @@ namespace Data
                 new Product { Id = 40, Name = "Samsung Galaxy Tab A8", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://d3m9l0v76dty0.cloudfront.net/system/photos/8705804/original/f4a99cf07a6c9ec750e0e18778d64bb0.png", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
                 new Product { Id = 41, Name = "Samsung Galaxy Tab A7 Lite", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://hotstore.hotmobile.co.il/media/catalog/product/cache/a73c0d5d6c75fbb1966fe13af695aeb7/e/0/e010022011_3_1_1_1.png", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
 
+
+
+
+
+
+
+                //Televisions
+
                 new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
                 new Product { Id = 43, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
                 new Product { Id = 44, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
@@ -101,11 +109,127 @@ namespace Data
                 new Product { Id = 46, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
                 new Product { Id = 47, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
                 new Product { Id = 48, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
-                new Product { Id = 49, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" }
+                new Product { Id = 49, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 49, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 49, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 49, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 49, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+
+                //Procesors
+
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+
+                //Graphic Cards
+
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
 
 
 
-                //Television
+                //Laptops
+                new Product { Id = 42, Name = "Macbook Air M1", Price = 899, Manufacturer = Manufacturer.Apple, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Laptop_PC, Description = "" },
+                new Product { Id = 42, Name = "Macbook Pro M1", Price = 1299, Manufacturer = Manufacturer.Apple, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Laptop_PC, Description = "" },
+                new Product { Id = 42, Name = "Macbook Air M2", Price = 759, Manufacturer = Manufacturer.Apple, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Laptop_PC, Description = "" },
+                new Product { Id = 42, Name = "Macbook Pro M2", Price = 759, Manufacturer = Manufacturer.Apple, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Laptop_PC, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+
+
+
+
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+
+
+
+
+
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+
+
+
+
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 42, Name = "", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
