@@ -174,6 +174,19 @@ namespace ToDoListPractice.Controllers
         }
 
 
+        [HttpPost("UserValidation")]
+        public async Task<IActionResult> UserValidation(string UserId)
+        {
+            var user = await userManager.FindByIdAsync(UserId);
+            if (user != null)
+            {
+                return Ok(user.Id);
+            }
+            else {  return BadRequest(); }
+
+        }
+
+
 
 
 
