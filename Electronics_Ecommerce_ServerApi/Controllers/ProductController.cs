@@ -75,7 +75,9 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
                 res = res.Where(n => n.Category == Category.ComputerAccessories_Speakers);
             if (Index == 15)
                 res = res.Where(n => n.Category == Category.ComputerAccessories_Headphones);
-           
+
+            if (Index == 0)
+                res = res;
             
             return Ok(res);
         }
@@ -130,6 +132,11 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
         }
 
 
+
+
+       
+
+
     }
 
 
@@ -149,7 +156,7 @@ namespace Electronics_Ecommerce_ServerApi.Controllers
 
 
 
-}
+    }
 
         
 
