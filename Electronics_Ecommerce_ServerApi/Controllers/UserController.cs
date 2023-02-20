@@ -42,7 +42,7 @@ namespace ToDoListPractice.Controllers
                 FullName = $"{model.FirstName} {model.LastName}"
             };
 
-            if (model.Region != "string" && model.City != "string" && model.Street != "string" && model.AddressNumber != "string")
+            if (model.Region != "" && model.City != "" && model.Street != "" && model.AddressNumber != "")
             {
                 Address address = new()
                 {
@@ -60,11 +60,11 @@ namespace ToDoListPractice.Controllers
             {
                 CreditCard credit = new()
                 {
-                    Month_ExpirationDate= model.Month_ExpirationDate,
-                    Year_ExpirationDate= model.Year_ExpirationDate,
-                    Number= model.CreditCardNumber,
-                    CVV= model.CVV,
-                    
+                    Month_ExpirationDate = model.Month_ExpirationDate,
+                    Year_ExpirationDate = model.Year_ExpirationDate,
+                    Number = model.CreditCardNumber,
+                    CVV = model.CVV,
+
                 };
                 await creditRepository.Insert(credit);
                 var credit1 = await creditRepository.Find(credit);
@@ -73,7 +73,7 @@ namespace ToDoListPractice.Controllers
 
             var result = await userManager.CreateAsync(user, model.Password);
 
-            
+
 
             if (result.Succeeded)
             {
@@ -135,7 +135,7 @@ namespace ToDoListPractice.Controllers
             }
             var card2 = await creditRepository.GetById(user.CreditCardId);
             card2.CVV = cardDTO.CVV;
-            card2.Number = cardDTO.Number;  
+            card2.Number = cardDTO.Number;
             card2.Year_ExpirationDate = cardDTO.Year_ExpirationDate;
             card2.Month_ExpirationDate = cardDTO.Month_ExpirationDate;
             await creditRepository.Update(card2);
@@ -154,7 +154,7 @@ namespace ToDoListPractice.Controllers
                 {
                     Number = addressDTO.Number,
                     Street = addressDTO.Street,
-                     City = addressDTO.City,
+                    City = addressDTO.City,
                     Region = addressDTO.Region
                 };
                 await addressRepository.Insert(address);
@@ -166,7 +166,7 @@ namespace ToDoListPractice.Controllers
             var address2 = await addressRepository.GetById(user.AddressId);
             address2.Number = addressDTO.Number;
             address2.Street = addressDTO.Street;
-            address2.City = addressDTO.City;    
+            address2.City = addressDTO.City;
             address2.Region = addressDTO.Region;
             await addressRepository.Update(address2);
             return Ok(address2);
@@ -182,13 +182,28 @@ namespace ToDoListPractice.Controllers
             {
                 return Ok(user.Id);
             }
-            else {  return BadRequest(); }
+            else { return BadRequest(); }
 
         }
 
 
 
+        [HttpGet("AddressUser")]
+        public async Task<IActionResult> GetAccountAddress(string UserId)
+        {
+            var user = await userManager.FindByIdAsync(UserId);
+            if (user != null)
+            {
+                if (user.AddressId != 0)
+                {
+                var userAddress = await addressRepository.GetById(user.AddressId);
+                return Ok(userAddress);
 
+                }
+                return BadRequest("User Does Not Have Address");
+            }
+            return BadRequest("error user is not founded");
+        }
 
         //[HttpPost("ValidateToken")]
         //public async Task<IActionResult> ValidateToken(string Token)

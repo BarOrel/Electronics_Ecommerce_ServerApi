@@ -27,12 +27,6 @@ namespace Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<UserApplication>().HasData(
-                new UserApplication { UserName = "bar1236", PasswordHash = "bar554401", AddressId = 1, Email = "bari0777@walla.com", FullName = "Bar Orel" }
-
-
-                );
-
 
 
 
