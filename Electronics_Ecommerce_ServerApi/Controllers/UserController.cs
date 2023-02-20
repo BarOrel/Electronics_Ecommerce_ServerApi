@@ -123,7 +123,7 @@ namespace ToDoListPractice.Controllers
                 CreditCard credit = new()
                 {
                     CVV = cardDTO.CVV,
-                    Number = cardDTO.Number,
+                    Number = Int64.Parse(cardDTO.Number),
                     Month_ExpirationDate = cardDTO.Month_ExpirationDate,
                     Year_ExpirationDate = cardDTO.Year_ExpirationDate,
                 };
@@ -135,7 +135,8 @@ namespace ToDoListPractice.Controllers
             }
             var card2 = await creditRepository.GetById(user.CreditCardId);
             card2.CVV = cardDTO.CVV;
-            card2.Number = cardDTO.Number;
+           
+            card2.Number = Int64.Parse(cardDTO.Number);
             card2.Year_ExpirationDate = cardDTO.Year_ExpirationDate;
             card2.Month_ExpirationDate = cardDTO.Month_ExpirationDate;
             await creditRepository.Update(card2);
@@ -174,6 +175,33 @@ namespace ToDoListPractice.Controllers
         }
 
 
+        [HttpPost("AddAccountDetails")]
+        public async Task<IActionResult> AddAccountDetails(DetailsDTO detailsDTO)
+        {
+            var user = await userManager.FindByIdAsync(detailsDTO.UserId);
+            if (user != null)
+            {
+                user.UserName = detailsDTO.Username;
+                user.FullName = detailsDTO.FirstName+ " " + detailsDTO.LastName;
+                user.Email = detailsDTO.Email;
+                await userManager.UpdateAsync(user);
+                return Ok(user);
+            }
+            return BadRequest();
+        }
+        
+        [HttpPost("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordDTO DTO)
+        {
+            var user = await userManager.FindByIdAsync(DTO.UserId);
+            if (user != null)
+            {
+                await userManager.ChangePasswordAsync(user, DTO.CurrentPassword, DTO.NewPassword);
+                return Ok(user);
+            }
+            return BadRequest();
+        }
+
         [HttpPost("UserValidation")]
         public async Task<IActionResult> UserValidation(string UserId)
         {
@@ -196,8 +224,8 @@ namespace ToDoListPractice.Controllers
             {
                 if (user.AddressId != 0)
                 {
-                var userAddress = await addressRepository.GetById(user.AddressId);
-                return Ok(userAddress);
+                    var userAddress = await addressRepository.GetById(user.AddressId);
+                    return Ok(userAddress);
 
                 }
                 return BadRequest("User Does Not Have Address");
