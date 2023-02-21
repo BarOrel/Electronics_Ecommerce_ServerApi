@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Text.Json;
 using ToDoListPractice.Data.Services.JWT;
 
 namespace ToDoListPractice.Controllers
@@ -107,7 +108,8 @@ namespace ToDoListPractice.Controllers
                 username = userFromDB.UserName,
                 email = userFromDB.Email,
                 userid = userFromDB.Id,
-                token = tokenService.GenerateToken(userFromDB)
+                token = tokenService.GenerateToken(userFromDB),
+                isadmin = userFromDB.IsAdmin
 
             });
 
@@ -135,7 +137,7 @@ namespace ToDoListPractice.Controllers
             }
             var card2 = await creditRepository.GetById(user.CreditCardId);
             card2.CVV = cardDTO.CVV;
-           
+
             card2.Number = Int64.Parse(cardDTO.Number);
             card2.Year_ExpirationDate = cardDTO.Year_ExpirationDate;
             card2.Month_ExpirationDate = cardDTO.Month_ExpirationDate;
@@ -182,24 +184,29 @@ namespace ToDoListPractice.Controllers
             if (user != null)
             {
                 user.UserName = detailsDTO.Username;
-                user.FullName = detailsDTO.FirstName+ " " + detailsDTO.LastName;
+                user.FullName = detailsDTO.FullName;
                 user.Email = detailsDTO.Email;
                 await userManager.UpdateAsync(user);
                 return Ok(user);
             }
             return BadRequest();
         }
-        
+
         [HttpPost("ChangePassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordDTO DTO)
         {
             var user = await userManager.FindByIdAsync(DTO.UserId);
             if (user != null)
             {
-                await userManager.ChangePasswordAsync(user, DTO.CurrentPassword, DTO.NewPassword);
-                return Ok(user);
+                var res = await userManager.ChangePasswordAsync(user, DTO.CurrentPassword, DTO.NewPassword);
+                if(res.Succeeded)
+                {
+                return Ok();
+
+                }
+                return BadRequest("faild");
             }
-            return BadRequest();
+            return BadRequest("faild");
         }
 
         [HttpPost("UserValidation")]
@@ -229,6 +236,26 @@ namespace ToDoListPractice.Controllers
 
                 }
                 return BadRequest("User Does Not Have Address");
+            }
+            return BadRequest("error user is not founded");
+        }
+
+        [HttpGet("GetAccountDetails")]
+        public async Task<IActionResult> GetAccountDetails(string UserId)
+        {
+
+            var user = await userManager.FindByIdAsync(UserId);
+            if (user != null)
+            {
+                DetailsDTO DTO = new()
+                {
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Username = user.UserName
+                };
+            
+              return Ok(DTO);
+                
             }
             return BadRequest("error user is not founded");
         }

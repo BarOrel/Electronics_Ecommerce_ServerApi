@@ -108,7 +108,7 @@ namespace Data
                 new Product { Id = 51, Name = "Samsung TV 4K 85", Price = 759, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://img.zap.co.il/pics/8/2/0/4/70674028c.gif", ReleaseDate = DateTime.Now, Category = Category.Televsion, Description = "" },
                 new Product { Id = 52, Name = "Hisense 4K 85", Price = 1999, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://img.zap.co.il/pics/1/8/5/8/53818581c.gif", ReleaseDate = DateTime.Now, Category = Category.Televsion, Description = "" },
                 new Product { Id = 53, Name = "TCL FullHD 40", Price = 239, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://img.zap.co.il/pics/2/1/9/5/67935912c.gif", ReleaseDate = DateTime.Now, Category = Category.Televsion, Description = "" },
-                new Product { Id = 54, Name = "MAG HD 32", Price = 199, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://img.zap.co.il/pics/5/5/6/9/56109655c.gif", ReleaseDate = DateTime.Now, Category = Category.Tablet, Description = "" },
+                new Product { Id = 54, Name = "MAG HD 32", Price = 199, Manufacturer = Manufacturer.Samsung, ImgUrl = "https://img.zap.co.il/pics/5/5/6/9/56109655c.gif", ReleaseDate = DateTime.Now, Category = Category.Televsion, Description = "" },
 
                 //Procesors
 
