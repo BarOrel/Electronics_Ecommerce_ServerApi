@@ -31,7 +31,7 @@ namespace Data
 
 
             modelBuilder.Entity<Product>().HasData(
-                //gaming console
+                //gaming console //change ps5 image
                 new Product { Id = 1, Name = "PlayStation 5", Price = 499, Manufacturer = Manufacturer.Sony, ImgUrl = "https://www.citypng.com/public/uploads/preview/-11591925787cggjhepdvq.png", ReleaseDate = DateTime.Now, Category = Category.VideoGame_Console, Description = "The PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. It was announced as successor to the PlayStation 4 in April 2019, was launched on November 12, 2020" },
                 new Product { Id = 2, Name = "PlayStation 4", Price = 299, Manufacturer = Manufacturer.Sony, ImgUrl = "https://www.seekpng.com/png/full/199-1998029_playstation4-vinyl-decal-stickers-for-ps4-game-console.png", ReleaseDate = DateTime.Now, Category = Category.VideoGame_Console, Description = "The PlayStation 4 (PS4) is a home video game console developed by Sony Interactive Entertainment." },
                 new Product { Id = 3, Name = "Xbox Series X", Price = 329, Manufacturer = Manufacturer.Microsoft, ImgUrl = "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4mRni?ver=a707", ReleaseDate = DateTime.Now, Category = Category.VideoGame_Console, Description = "Xbox Series X is launching at participating retailers worldwide on 10 November 2020." },

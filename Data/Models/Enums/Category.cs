@@ -27,7 +27,8 @@ namespace Data.Models.Enums
         ComputerAccessories_Mouse,
         ComputerAccessories_Monitor, //bar
         ComputerAccessories_Speakers,
-        ComputerAccessories_Headphones
+        ComputerAccessories_Headphones,
+        All
 
 
 
